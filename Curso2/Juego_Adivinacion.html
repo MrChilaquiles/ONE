@@ -1,0 +1,24 @@
+<meta charset="UTF-8">
+<h1>Programa - Sacar su IMC</h1>
+
+<script>
+
+    function br(){
+        document.write("<br>");
+    }
+    function cout(frase){
+        document.write(frase);
+        br();
+    }
+
+
+    var mMostrar = parseInt(prompt("Ingresa un año límite para calcular los mundiales: "));
+    var nMundiales = 1930;
+
+    while(mMostrar > nMundiales){
+        cout("Hubo mundial en el año " + nMundiales)
+        nMundiales = nMundiales + 4;
+    }
+
+    alert("fin")
+</script>

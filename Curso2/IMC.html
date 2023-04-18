@@ -1,0 +1,36 @@
+<meta charset="UTF-8">
+<h1>Programa - Sacar su IMC</h1>
+
+<script>
+
+    function imc(peso,altura){
+        return (peso/(altura*altura));
+    }
+
+    function cout(frase){
+        document.write(frase);
+    }
+
+    var altura, peso, nombre
+
+    nombre = prompt("Ingresa tu nombre: ");
+    alturacal = prompt(nombre + " ingresa tu altura: ");
+    pesocal = prompt(nombre + " ingresa tu peso: ");
+    imcCal = imc(pesocal, alturacal);
+
+    cout("Este es un programa de de prueba para sacar el IMC");
+    cout("<br>" + nombre + " este es su IMC: " + imcCal);
+
+    if (imcCal < 18.5) {
+        cout("<br>" + nombre + " tienes insuficiencia ponderal");   
+    }
+    if (imcCal > 18.5 && imcCal < 24.9) {
+        cout("<br>" + nombre + " tienes intervalo normal");   
+    }
+    if (imcCal >= 25) {
+        cout("<br>" + nombre + " tienes sobrepeso");   
+    }
+    if (imcCal >= 30) {
+        cout("<br>" + nombre + " tienes obesidad");   
+    }
+</script>
