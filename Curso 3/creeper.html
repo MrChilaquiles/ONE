@@ -1,0 +1,18 @@
+<canvas width="600", height="400">
+</canvas>
+
+<script>
+    
+    var pantalla = document.querySelector("canvas");
+    var pincel = pantalla.getContext("2d");
+
+    pincel.fillStyle = "darkgreen"; //Es una porpiedad por eso requiere un igualador
+    pincel.fillRect(0,0,350,300); //Le indica desde que posición inicia y su dimension
+
+    pincel.fillStyle = "black";
+    pincel.fillRect(130,150,70,100); //Nariz
+    pincel.fillRect(130,150,-90,-90);//Ojo izq
+    pincel.fillRect(200,150,90,-90);//Ojo der
+    pincel.fillRect(100,300,40,-110);//Boca izq
+    pincel.fillRect(200,300,40,-110);//Boca der
+</script>
