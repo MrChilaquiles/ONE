@@ -1,0 +1,22 @@
+<canvas width="600", height="400">
+</canvas>
+
+<script>
+    function dibCuadrados(x) {
+        var pantalla = document.querySelector("canvas");
+        var pincel = pantalla.getContext("2d");
+
+        pincel.fillStyle = "darkgreen"; //Es una porpiedad por eso requiere un igualador
+        pincel.fillRect(x,0,50,50); //Le indica desde que posición inicia y su dimension
+        pincel.strokeStyle = "black"; //Estilo de linea
+        pincel.strokeRect(x,0,50,50);
+    }
+
+    var nCuadrados = parseInt(prompt("Indique la cantidad de cuadrados a imprimir: "));
+    
+    for (pos = 0; pos < nCuadrados; pos++){
+        nVeces = pos * 50;
+        dibCuadrados(nVeces);
+    }     
+    
+</script>
