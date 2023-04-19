@@ -1,0 +1,29 @@
+<meta charset="UTF-8">
+
+<h1>Programa - Sacar la media de edad de una familia</h1>
+
+<script>
+
+    function br() {
+        document.write("<br>");
+    }
+
+    function cout(frase) {
+        document.write(frase);
+        br();
+    }
+
+    var tFam = parseInt(prompt("Escriba la cantidad de miembros de la familia: "));
+    var cont = 1;
+    var edadT = 0;
+
+    while (cont <= tFam) {
+        edad = parseInt(prompt("Ingrese la edad del familiar: "));
+        edadT = edadT + edad;
+        cont++;
+    }
+    
+    edadM = edadT = edadT/tFam;
+    cout("La edad media de la familia es: " + edadM);
+
+</script>
