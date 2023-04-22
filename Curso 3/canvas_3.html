@@ -2,9 +2,34 @@
 </canvas>
 
 <script>
+    
     function cout(frase) {
         document.write(frase);
     } 
+
+    function dibCir(x,y,radio) {
+        pincel.fillStyle = "red";
+        pincel.beginPath();
+        pincel.arc(x,y,radio,0,2*Math.PI);
+        pincel.fill();
+    }
+
+    function clear() {
+        pincel.clearRect(0,0,600,400); //ClearRect = limpiar rectangulo conforme a los parametros dados
+    }
+
+    function refresh() {
+        clear();
+        dibCir(x,20,15);
+        x++;
+    }
+
     var pantalla = document.querySelector("canvas");
     var pincel = pantalla.getContext("2d");
+    var x = 0;
+    pincel.fillStyle = "gray";
+    pincel.fillRect(0,0,600,400);
+
+    setInterval(refresh,50); //Se utiliza para insertar un intervalo en el tiempo dado
+
 </script>
