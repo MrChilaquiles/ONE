@@ -8,6 +8,8 @@
     } 
 
     function dibCir(x,y,radio) {
+        pincel.fillStyle = "gray";
+        pincel.fillRect(0,0,600,400);
         pincel.fillStyle = "red";
         pincel.beginPath();
         pincel.arc(x,y,radio,0,2*Math.PI);
@@ -20,16 +22,24 @@
 
     function refresh() {
         clear();
+        if (x > 600) {
+            sentido = -1;
+        } else if (x < 0) {
+            sentido = 1;
+        }
         dibCir(x,20,15);
-        x++;
+        x = x +sentido;
     }
 
     var pantalla = document.querySelector("canvas");
     var pincel = pantalla.getContext("2d");
     var x = 0;
-    pincel.fillStyle = "gray";
-    pincel.fillRect(0,0,600,400);
-
-    setInterval(refresh,50); //Se utiliza para insertar un intervalo en el tiempo dado
+    var sentido = 1;
+    
+    
+    setInterval(refresh,10);
+    
+    
+    //(refresh,50); //Se utiliza para insertar un intervalo en el tiempo dado
 
 </script>
