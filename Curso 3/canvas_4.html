@@ -1,0 +1,82 @@
+<canvas width="600", height="400">
+</canvas>
+<h1 id="score">0</h1>
+<h2 id="timer">60</h2>
+<button id="start">Inicio</button>
+<script>
+    var pantalla = document.querySelector("canvas");
+    var pincel = pantalla.getContext("2d");
+    var score = document.querySelector("#score");
+    var timer = document.querySelector("#timer");
+    var start = document.querySelector("#start");
+    var x = 0;
+    var radio = 10;
+    var xRandom = posRandom(600);
+    var yRandom = posRandom(400);
+    var aciertos = 0;
+    var t = 60;
+
+    function dibCir(x,y,radio,color) {
+        pincel.fillStyle = color;
+        pincel.beginPath();
+        pincel.arc(x,y,radio,0,2*Math.PI);
+        pincel.fill();
+    }
+
+    function clear() {
+        pincel.clearRect(0,0,600,400); //ClearRect = limpiar rectangulo conforme a los parametros dados
+    }
+
+    function refresh() {
+        clear();
+        pincel.fillStyle = "gray";
+        pincel.fillRect(0,0,600,400);
+        xRandom = posRandom(600, 0);
+        yRandom = posRandom(400, 0);
+        disObj(xRandom,yRandom);
+
+    }
+
+    function disObj(x,y) {
+        dibCir(x,y,radio + 20, "red");
+        dibCir(x,y,radio + 10, "white");
+        dibCir(x,y,radio, "red");
+    }
+
+    function posRandom(max, min) {
+        max = max - (radio + 20); 
+        min = min + (radio + 20);
+        return Math.floor(Math.random() * (max - min) + min);
+    }
+
+    function disparo(evento) {
+        var x = evento.pageX - pantalla.offsetLeft;
+        var y = evento.pageY - pantalla.offsetTop;
+        if ((x < xRandom + (radio + 20)) && (x > xRandom - (radio + 20)) && (y < yRandom + (radio + 20)) && (y > yRandom - (radio + 20))) {
+            contador();
+        }
+        refresh();
+    }
+
+    function contador(n) {
+        aciertos = aciertos + 1;
+        score.innerHTML = aciertos;
+    }
+    
+    const interval = setInterval(time,1000); //Se utiliza para insertar un intervalo en el tiempo dado
+
+    function time() {
+        t = t - 1;
+        timer.innerHTML = t; 
+        if(t==0){
+            clearInterval(interval);
+            aciertos = 0;
+            score.innerHTML = aciertos;
+        }
+
+    }
+    
+    refresh();
+    pantalla.onclick = disparo;
+
+</script>
