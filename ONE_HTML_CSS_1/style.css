@@ -1,10 +1,28 @@
 body{
     background: #ccc;
 }
-h1{
-    background: #fff;
+
+#banner{
+    width: 100%;
 }
+h1{
+    text-align: center;
+    background: #fff;
+    border: 10px solid #000000;
+    padding: 20px;
+    margin: 40px;
+}
+
 p{
     text-align: center;
     font-size: 15px;
+}
+
+#mision{
+    font-size: 20px;
+}
+
+.items{
+    font-size: 15;
+    font-style: italic;
 }
