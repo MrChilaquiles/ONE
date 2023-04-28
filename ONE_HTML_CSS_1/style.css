@@ -1,13 +1,15 @@
-body{
-    background: #ccc;
+h1{
+    padding-left: 30px;
 }
-
+.principal{
+    background: #ccc;
+    padding: 20px;
+}
 #banner{
     width: 100%;
 }
-h1{
+h2{
     text-align: center;
-    background: #fff;
     border: 10px solid #000000;
     padding: 20px;
     margin: 40px;
@@ -22,7 +24,23 @@ p{
     font-size: 20px;
 }
 
+.diferenciales{
+    background: #ffffff;
+    padding: 30px;
+}
 .items{
     font-size: 15;
     font-style: italic;
+}
+
+ul{
+    display: inline-block;
+    vertical-align: top;
+    width: 20%;
+    margin-right: 15%;
+}
+
+.imagenDiferenciales{
+    width: 50%;
+
 }
