@@ -1,5 +1,16 @@
 header{
     background: #bbb;
+    padding: 20px 0px;
+}
+.caja{
+    width: 940px;
+    position: relative;
+    margin: 0 auto;
+}
+nav{
+    position: absolute;
+    top: 110px;
+    right: 0px;
 }
 nav li{
     display: inline;
@@ -11,4 +22,30 @@ nav a{
     font-weight: bold;
     font-size: 22px;
     text-decoration: none;
+}
+.productos{
+    width: 920px;
+    margin: 0 auto;
+    padding: 50px;
+}
+.productos li{
+    display: inline-block;
+    text-align: center;
+    width: 30%;
+    vertical-align: top;
+    margin: 0 1.5%;
+    padding: 30px 20px;
+    box-sizing: border-box;
+}
+.productos h2{
+    font-size: 30px;
+    font-weight: bold;
+}
+.producto-descripcion{
+    font-size: 18px;
+}
+.producto-precio{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
 }
