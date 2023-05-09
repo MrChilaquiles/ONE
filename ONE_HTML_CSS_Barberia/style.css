@@ -80,7 +80,7 @@ main{
 form{
     margin: 40px 0;
 }
-form label, form p{
+form label, form legend{
     display: block;
     font-size: 20px;
     margin: 0 0 10px;
@@ -93,4 +93,33 @@ form label, form p{
 }
 .checkbox{
     margin: 20px 0;
+}
+.enviar{
+    width: 40%;
+    padding: 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background: orange;
+    border: none;
+    border-radius: 10px;
+    transition: 1s all;
+    cursor: pointer;
+}
+.enviar:hover{
+    background: darkorange;
+    transform: scale(1.2);
+    
+}
+table{
+    margin: 40px 40px;
+}
+thead{
+    background:grey;
+    color: #fff;
+    font-weight: bold;
+}
+td,th{
+    border: 1px solid #000;
+    padding: 8px 15px;
 }
