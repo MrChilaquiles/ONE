@@ -202,3 +202,17 @@ td,th{
     margin: 1em auto;
 
 }
+@media screen and (max-width:480px) {
+    h1{
+        text-align: center;
+    }
+    nav{
+        position: static;
+    }
+    .caja, .principal, .ubicacion-contenido, .contenido-diferenciales, .video{
+        width: auto;
+    }
+    .lista-diferenciales, .imagenDiferenciales{
+        width: 100%;
+    }
+}
