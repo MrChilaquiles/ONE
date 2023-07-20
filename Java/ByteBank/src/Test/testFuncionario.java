@@ -16,7 +16,7 @@ public class testFuncionario {
         gerente.setSalario(6000);
         gerente.setTipo(1);
         gerente.setClave("estaEsLaClave");
-        System.out.println(gerente.inisiarSesion("estaEsLaClave"));
+        System.out.println(gerente.inisiarSesion("estaEshvvLaClave"));
         System.out.println(gerente.getBonificacion());
     }
 }
