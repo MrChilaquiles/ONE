@@ -1,4 +1,9 @@
 package Modelo;
+
+/**
+ * @version 1.0
+ * @author RGGA2000
+ */
 public abstract class Cuenta {
     /*  public          visible en cualquier paquete
         default         visible en la clase y en cualquier otro miembro del mismo paquete y para cualquier hijo
@@ -10,12 +15,22 @@ public abstract class Cuenta {
     private int numero;
     private Cliente titular = new Cliente();
     private static int total = 0;
+
+    /**
+     * Instancia una cuenta usando agencia y numero como parametros
+     * @param agencia
+     * @param numero
+     */
     public Cuenta(int agencia, int numero){
         this.agencia = agencia;
         this.numero = numero;
         Cuenta.total ++;
     }
     public abstract void depositar(double valor);
+    /**
+     * Este metodo retira dinero de la cuenta y si ocurre un error devulve una excepcion
+     * @param valor
+     */
     public void saca(double valor){
         if (this.saldo < valor) {
             throw new SaldoInsuficienteException("No tienes saldo");
