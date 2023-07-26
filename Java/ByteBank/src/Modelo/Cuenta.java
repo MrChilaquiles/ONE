@@ -14,8 +14,14 @@ public abstract class Cuenta {
     private int agencia;
     private int numero;
     private Cliente titular = new Cliente();
-    private static int total = 0;
+    private static int total;
 
+    /**
+     * Instancia una neuva cuenta sin parametros
+     */
+    public Cuenta(){
+
+    }
     /**
      * Instancia una cuenta usando agencia y numero como parametros
      * @param agencia
@@ -25,6 +31,7 @@ public abstract class Cuenta {
         this.agencia = agencia;
         this.numero = numero;
         Cuenta.total ++;
+        System.out.println("Estoy creando una cuenta con numero: " + numero);
     }
     public abstract void depositar(double valor);
     /**
@@ -72,4 +79,15 @@ public abstract class Cuenta {
     public Cliente getTitular() {
         return titular;
     }
+    public int getNumero(){return numero;}
+    public void setNumero(int numero) {
+        if (numero > 0) {
+            this.numero = numero;
+        }
+    }
+    public String toString(){
+        String cuenta = "Numero: " + this.numero + ", Agencia: " + this.agencia;
+        return cuenta;
+    }
 }
+
