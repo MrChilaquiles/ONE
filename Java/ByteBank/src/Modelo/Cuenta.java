@@ -89,5 +89,17 @@ public abstract class Cuenta {
         String cuenta = "Numero: " + this.numero + ", Agencia: " + this.agencia;
         return cuenta;
     }
+    public boolean esIgual(Cuenta cuenta) {
+        return this.agencia == cuenta.getAgencia() && this.numero == cuenta.getNumero();
+    }
+    /*
+    Este metodo sobreescribe la clase equals para ahcer que evalue si los parametros agencia y numero de una cuenta son iguales a los parametros
+    de otra cuenta
+     */
+    @Override
+    public boolean equals(Object obj) {
+        Cuenta cuenta = (Cuenta) obj;
+        return this.agencia == cuenta.getAgencia() && this.numero == cuenta.getNumero();
+    }
 }
 
