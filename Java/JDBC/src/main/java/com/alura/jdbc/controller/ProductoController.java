@@ -10,9 +10,19 @@ import java.sql.Statement;
 import java.util.List;
 import java.util.Map;
 import javax.swing.JOptionPane;
+
+import com.alura.jdbc.DAO.ProductoDAO;
 import com.alura.jdbc.factory.ConnectionFactory;
+import com.alura.jdbc.modelo.Producto;
 
 public class ProductoController {
+	
+	private ProductoDAO productoDAO;
+	
+	public ProductoController() {
+		this.productoDAO = new ProductoDAO(new ConnectionFactory().recuperaConexion());
+	}
+	
 
 	public int modificar(String nombre, String descripcion, Integer cantidad, Integer id) {
 		try {
@@ -51,65 +61,11 @@ public class ProductoController {
 		}
 	}
 
-	public List<Map<String, String>> listar() throws SQLException {
-		ConnectionFactory factory = new ConnectionFactory();
-		final Connection con = factory.recuperaConexion();
-		try (con) {
-			final PreparedStatement statement = con
-					.prepareStatement("SELECT ID, NOMBRE, DESCRIPCION, CANTIDAD FROM PRODUCTO");
-			try (statement) {
-				statement.execute();
-				ResultSet resultSet = statement.getResultSet();
-				List<Map<String, String>> resultado = new ArrayList<>();
-				while (resultSet.next()) {
-					Map<String, String> fila = new HashMap<>();
-					fila.put("ID", String.valueOf(resultSet.getInt("ID")));
-					fila.put("NOMBRE", resultSet.getString("NOMBRE"));
-					fila.put("DESCRIPCION", resultSet.getString("DESCRIPCION"));
-					fila.put("CANTIDAD", String.valueOf(resultSet.getInt("CANTIDAD")));
-					resultado.add(fila);
-				}
-				return resultado;
-			}
-		}
+	public List<Producto> listar(){
+		return productoDAO.listar();
 	}
 
-	public void guardar(Map<String, String> producto) throws SQLException {
-		String nombre = producto.get("NOMBRE");
-		String descripcion = producto.get("DESCRIPCION");
-		Integer cantidad = Integer.valueOf(producto.get("CANTIDAD"));
-		Integer maxCant = 100;
-		ConnectionFactory factory = new ConnectionFactory();
-		final Connection con = factory.recuperaConexion();
-		try (con) {
-			con.setAutoCommit(false);
-			final PreparedStatement statement = con.prepareStatement(
-					"INSERT INTO PRODUCTO (nombre, descripcion, cantidad) VALUES (?, ?, ?)",
-					Statement.RETURN_GENERATED_KEYS);
-			try (statement) {
-				do {
-					int cantdidadParaGuardar = Math.min(cantidad, maxCant);
-					ejecutaRegistro(nombre, descripcion, cantdidadParaGuardar, statement);
-					cantidad -= maxCant;
-				} while (cantidad > 0);
-				con.commit();
-			} catch (Exception e) {
-				con.rollback();
-			}
-		}
-	}
-
-	private void ejecutaRegistro(String nombre, String descripcion, Integer cantidad, PreparedStatement statement)
-			throws SQLException {
-		statement.setString(1, nombre);
-		statement.setString(2, descripcion);
-		statement.setInt(3, cantidad);
-		statement.execute();
-		final ResultSet resultSet = statement.getGeneratedKeys();
-		try (resultSet) {
-			while (resultSet.next()) {
-				System.out.println(String.format("Fue insertado el valor de ID %d", resultSet.getInt(1)));
-			}
-		}
+	public void guardar(Producto producto){
+		productoDAO.guardar(producto);
 	}
 }
