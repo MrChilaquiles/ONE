@@ -16,13 +16,12 @@ import com.alura.jdbc.factory.ConnectionFactory;
 import com.alura.jdbc.modelo.Producto;
 
 public class ProductoController {
-	
+
 	private ProductoDAO productoDAO;
-	
+
 	public ProductoController() {
 		this.productoDAO = new ProductoDAO(new ConnectionFactory().recuperaConexion());
 	}
-	
 
 	public int modificar(String nombre, String descripcion, Integer cantidad, Integer id) {
 		try {
@@ -61,11 +60,11 @@ public class ProductoController {
 		}
 	}
 
-	public List<Producto> listar(){
+	public List<Producto> listar() {
 		return productoDAO.listar();
 	}
 
-	public void guardar(Producto producto){
+	public void guardar(Producto producto) {
 		productoDAO.guardar(producto);
 	}
 }

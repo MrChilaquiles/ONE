@@ -14,14 +14,14 @@ import com.alura.jdbc.factory.ConnectionFactory;
 import com.alura.jdbc.modelo.Producto;
 
 public class ProductoDAO {
-	
+
 	final private Connection con;
-	
+
 	public ProductoDAO(Connection con) {
 		this.con = con;
 	}
-	
-	public void guardar(Producto producto){
+
+	public void guardar(Producto producto) {
 		try (con) {
 			final PreparedStatement statement = con.prepareStatement(
 					"INSERT INTO PRODUCTO (nombre, descripcion, cantidad) VALUES (?, ?, ?)",
@@ -33,9 +33,8 @@ public class ProductoDAO {
 			throw new RuntimeException(e);
 		}
 	}
-	
-	private void ejecutaRegistro(Producto producto, PreparedStatement statement)
-			throws SQLException {
+
+	private void ejecutaRegistro(Producto producto, PreparedStatement statement) throws SQLException {
 		statement.setString(1, producto.getNombre());
 		statement.setString(2, producto.getDescripcion());
 		statement.setInt(3, producto.getCantidad());
@@ -60,8 +59,9 @@ public class ProductoDAO {
 				statement.execute();
 				ResultSet resultSet = statement.getResultSet();
 				while (resultSet.next()) {
-					Producto fila = new Producto(resultSet.getInt("ID"), resultSet.getString("NOMBRE"), resultSet.getString("DESCRIPCION"), resultSet.getInt("CANTIDAD"));
-					
+					Producto fila = new Producto(resultSet.getInt("ID"), resultSet.getString("NOMBRE"),
+							resultSet.getString("DESCRIPCION"), resultSet.getInt("CANTIDAD"));
+
 					resultado.add(fila);
 				}
 				return resultado;

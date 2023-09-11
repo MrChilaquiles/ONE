@@ -221,7 +221,7 @@ public class ControlDeStockFrame extends JFrame {
 	private void cargarTabla() {
 		var productos = this.productoController.listar();
 		productos.forEach(producto -> modelo.addRow(new Object[] { producto.getId(), producto.getNombre(),
-						producto.getDescripcion(), producto.getCantidad()}));
+				producto.getDescripcion(), producto.getCantidad() }));
 	}
 
 	private void guardar() {
@@ -241,7 +241,7 @@ public class ControlDeStockFrame extends JFrame {
 		}
 
 		var producto = new Producto(textoNombre.getText(), textoDescripcion.getText(), cantidadInt);
-		
+
 		var categoria = comboCategoria.getSelectedItem();
 
 		this.productoController.guardar(producto);
